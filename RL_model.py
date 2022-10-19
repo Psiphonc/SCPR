@@ -73,10 +73,15 @@ class DQN(nn.Module):
 
 class Agent(object):
     def __init__(self, device, memory, state_space, hidden_size, action_space, EPS_START = 0.9, EPS_END = 0.05, EPS_DECAY = 200):
+        # will select an action accordingly to an epsilon greedy policy. Simply put, we’ll sometimes use our model
+        # for choosing the action, and sometimes we’ll just sample one uniformly. The probability of choosing a
+        # random action will start at EPS_START and will decay exponentially towards EPS_END. EPS_DECAY controls the
+        # rate of the decay.
         self.EPS_START = EPS_START
         self.EPS_END = EPS_END
         self.EPS_DECAY = EPS_DECAY
-        self.steps_done = 0
+
+        self.steps_done = 0  # ?
         self.device = device
         self.policy_net = DQN(state_space, hidden_size, action_space).to(device)
         self.target_net = DQN(state_space, hidden_size, action_space).to(device)

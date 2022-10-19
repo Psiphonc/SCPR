@@ -239,6 +239,7 @@ def train(dataset, kg, model, bs, max_epoch, optimizer1, optimizer2, optimizer3,
         train_len = len(pickle_file[0])
         save_fm_model_log(dataset=data_name, filename=filename, epoch=epoch, epoch_loss=epoch_loss
                           , epoch_loss_2=epoch_loss_2, train_len=train_len)
+    return model
 
 def save_embedding(model, filename, epoch):
     model_dict = load_fm_model(data_name, model, filename, epoch)
